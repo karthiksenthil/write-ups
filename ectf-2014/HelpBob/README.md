@@ -1,7 +1,7 @@
 # Help Bob
 **Category**: Forensics
 **Points**: 400
-**Author**: [sushant94](https://github.com/kbhat95/)
+**Author**: [sushant94](https://github.com/sushant94/)
 > Message from Bob:
 
 > Hello Hacker!
