@@ -9,7 +9,7 @@
 > nc 212.71.235.214 5000 
 
 ## Write-up
-We are given a single archive named _Knotty.tar.gz_ which contains a single executable named _knotty_
+We are given a single archive named _Knotty.tar.gz_ which contains a single executable named _knotty_.
 Looking at assembly code of the executable we see that there are three functions
 
 * _main_ function
@@ -18,9 +18,9 @@ Looking at assembly code of the executable we see that there are three functions
 
 The _main_ function just calls the _dummy_ function and exits.
 
-The _get\_string_ function takes input from the user throught gets and returns.
+The _get\_string_ function takes input from the user through _gets_ and returns.
 
-The _dummy_ function is never called but there is system call inside it. It passes /bin/date string as an arguement.
+The _dummy_ function is never called but there is system call inside it. It passes /bin/date string as an argument.
 
 We basically need to somehow make the program drop us into the shell so that we can read the flag file.
 
@@ -30,12 +30,12 @@ Running `strings` on the binary tells us that there is string `/bin/bash -c "cat
 
 So to find the address of that string we run the `xxd` command. Through that we see that the above string is there at a offset of 0x5c0 from the starting of the binary. So the address of the string is 0x080485c0 . We can confirm this by running gdb and printing the string that is present in the address.
 
-Since we now have the address of the arguement as well as the address of the system call, we just need to derive our input. _dummy_ function tells us that _gets_ will write to EBP - 0x88 address. The address of system call is 0x080484da
+Since we now have the address of the argument as well as the address of the system call, we just need to derive our input. _dummy_ function tells us that _gets_ will write to EBP - 0x88 address. The address of system call is 0x080484da
 
 
 Thus our input will be
 
-"A"*136 + "JUNK" + `system_call_address` + `address_of_arguement`
+"A"*136 + "JUNK" + `system_call_address` + `address_of_argument`
 
 This reduces to "A"*140 + "\xda\x84\x04\x08"+"\xc0\x85\x04\x08"
 

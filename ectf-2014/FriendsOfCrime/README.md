@@ -15,7 +15,7 @@ We are given a archive called FriendsOfCrime.tar.gz . It contains a single strip
 
 * The starting address of the _main_ function is 0x8048462
 
-* Looking at the fag end of the _main_ function (Instruction at 0x80487ca) we see that the program calls a function without any arguements and then the return value of that function is passed to a function which prints it.
+* Looking at the fag end of the _main_ function (Instruction at 0x80487ca) we see that the program calls a function without any arguments and then the return value of that function is passed to a function which prints it.
 
 * In gdb add a break point at starting address of the main function. And directly force the program to jump to the above mentioned instruction(0x80487ca).
 
@@ -30,7 +30,7 @@ We are given a archive called FriendsOfCrime.tar.gz . It contains a single strip
 
 ###Alternate methods
 * We can reverse the function that we forced the program to call in the first method and get the flag from that.
-* We can reverse the main function to see that the program takes a command line arguement. It checks whether the command line arguement can be represented as a decimal number(_N_). Then it goes on to check whether atleast one of (5_N_^2 + 4) and (5_N_^2 - 4) is a perfect square and whether the number _N_ is within a range. This is satisfied by a fibonacci number within the bounds checked by the program. Calculate any one of those fibonacci numbers(there are 8) and pass it to the program to get the flag.
+* We can reverse the main function to see that the program takes a command line argument. It checks whether the command line argument can be represented as a decimal number(_N_). Then it goes on to check whether atleast one of (5_N_^2 + 4) and (5_N_^2 - 4) is a perfect square and whether the number _N_ is within a range. This is satisfied by a fibonacci number within the bounds checked by the program. Calculate any one of those fibonacci numbers(there are 8) and pass it to the program to get the flag.
 
 > Flag: flag{Care\_for\_one\_more?}
 
