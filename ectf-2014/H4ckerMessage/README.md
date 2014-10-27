@@ -9,7 +9,7 @@
 ## Write up
 This is probably the easiest and most solved question of ECTF'14 :)
 
-The given file is PCAP(Packet Capture) file. On opening the same using Wireshark we notice a lot of noise in the packets. However on filtering by protocol we notice some packets being transmitted using the FTP protocol. Since the question points out that something was exchanged on this network, we can follow this stream and find that a super_secret_mesage.png was transferred. Next by filtering for FTP-DATA protocol packets we find one packet where a 3972B file was exchanged. On following the same we get the PNG file dump in raw. Copying that to an empty file, we obtain the flag image.  
+The given file is PCAP(Packet Capture) file. On opening the same using Wireshark we notice a lot of noise in the packets. However on filtering by protocol we notice some packets being transmitted using the FTP protocol. Since the question points out that something was exchanged on this network, we can follow this stream and find that a super_secret_message.png was transferred. Next by filtering for FTP-DATA protocol packets we find one packet where a 3972B file was exchanged. On following the same we get the PNG file dump in raw. Copying that to an empty file, we obtain the flag image.  
 
 > flag{ThIs_Is_sO_1337}
 
